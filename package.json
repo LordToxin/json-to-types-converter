@@ -1,0 +1,20 @@
+{
+  "name": "json-to-types-converter",
+  "version": "1.0.0",
+  "description": "Instant schema inspector and multi-target type generator (TypeScript, Go, Rust, Pydantic, C#, JSON Schema) with mock synthesizer",
+  "main": "index.html",
+  "scripts": {
+    "test": "node test/converter.test.js",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "json-to-typescript",
+    "json-to-go",
+    "json-to-rust",
+    "pydantic-generator",
+    "json-schema",
+    "developer-tools"
+  ],
+  "author": "Developer",
+  "license": "MIT"
+}

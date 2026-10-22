@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  typeforge:
+    build: .
+    image: json-to-types-converter:latest
+    container_name: typeforge-studio
+    ports:
+      - "8082:80"
+    restart: unless-stopped
