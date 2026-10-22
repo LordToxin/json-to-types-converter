@@ -1,0 +1,424 @@
+/* ==========================================================================
+   TypeForge Studio - Developer Stylesheet
+   ========================================================================== */
+
+:root {
+  --bg-dark: #0a0e17;
+  --bg-editor: #0f1624;
+  --bg-panel: #131c2e;
+  --bg-control: #1a2438;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: #38bdf8;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #38bdf8;
+  --accent-purple: #a855f7;
+  --accent-emerald: #10b981;
+  --accent-rose: #f43f5e;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #0284c7, #9333ea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.brand-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent-cyan);
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+/* Presets & Samples Bar */
+.samples-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: rgba(10, 14, 23, 0.95);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow-x: auto;
+}
+
+.samples-label {
+  font-size: 0.775rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.sample-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.sample-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  border-color: var(--accent-cyan);
+}
+
+.sample-chip.active {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+/* Workspace Split Layout */
+.workspace-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  min-height: calc(100vh - 280px);
+}
+
+@media (max-width: 900px) {
+  .workspace-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.editor-pane {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-subtle);
+  background: var(--bg-editor);
+}
+
+.pane-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pane-title {
+  font-size: 0.825rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.editor-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+textarea.code-editor {
+  flex: 1;
+  width: 100%;
+  min-height: 420px;
+  background: var(--bg-editor);
+  color: #38bdf8;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  padding: 16px;
+  border: none;
+  resize: none;
+  outline: none;
+  tab-size: 2;
+}
+
+.error-banner {
+  background: rgba(244, 63, 94, 0.15);
+  border-top: 1px solid rgba(244, 63, 94, 0.4);
+  color: var(--accent-rose);
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+}
+
+/* Output Code Pane */
+.output-pane {
+  display: flex;
+  flex-direction: column;
+  background: #080c14;
+}
+
+.lang-tabs {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-control);
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+}
+
+.lang-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.775rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.lang-tab-btn.active {
+  background: var(--bg-panel);
+  color: var(--accent-cyan);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.root-name-input {
+  background: var(--bg-editor);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  padding: 4px 8px;
+  font-size: 0.775rem;
+  font-family: var(--font-mono);
+  width: 130px;
+}
+
+pre.code-view {
+  flex: 1;
+  padding: 16px;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #e2e8f0;
+  overflow: auto;
+  min-height: 420px;
+}
+
+/* Bottom Inspector & Stats Section */
+.inspector-section {
+  background: var(--bg-panel);
+  border-top: 1px solid var(--border-subtle);
+  padding: 16px 24px;
+}
+
+.inspector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.stats-group {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.stat-pill {
+  font-size: 0.775rem;
+  color: var(--text-dim);
+}
+
+.stat-pill strong {
+  color: var(--text-main);
+  font-family: var(--font-mono);
+}
+
+/* Tree View */
+.tree-container {
+  background: var(--bg-editor);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.tree-node {
+  margin-left: 12px;
+}
+
+.tree-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: default;
+}
+
+.tree-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tree-toggle {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  width: 12px;
+}
+
+.tree-toggle.clickable {
+  cursor: pointer;
+}
+
+.hidden-toggle {
+  opacity: 0;
+}
+
+.tree-key {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.tree-badge {
+  font-size: 0.65rem;
+  padding: 1px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.badge-string { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+.badge-number { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+.badge-boolean { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+.badge-object { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+.badge-array { background: rgba(244, 63, 94, 0.15); color: #fb7185; }
+.badge-null { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+
+.tree-val {
+  color: #cbd5e1;
+  opacity: 0.8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 400px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.775rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+}
+
+.btn-secondary {
+  background: var(--bg-control);
+  border-color: var(--border-subtle);
+  color: var(--text-main);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0f172a;
+  border: 1px solid var(--accent-cyan);
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-size: 0.85rem;
+  font-weight: 500;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+}
+
+.toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hidden {
+  display: none !important;
+}
